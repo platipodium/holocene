@@ -1,0 +1,11 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Contact: Kai W. Wirtz <kai.wirtz@hereon.de>
+Source: https://github.com/kaiwirtz2/holocene
+
+Files: c14mat/C14_*.mat
+Copyright: 2021 unknown
+License: unknown
+
+Files: paleoclim/*mat
+Copyright: 2021-2024 Helmholtz-Zentrum hereon GmbH
+License: CC-BY-SA-4.0

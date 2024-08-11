@@ -1,7 +1,8 @@
+% SPDX-FileCopyrightText: 2023-2024 Helmholtz-Zentrum hereon GmbH
+% SPDX-FileContributor: Kai W. Wirtz  <kai.wirtz@hereon.de>
+% SPDX-License-Identifier: GPL-3.0-or-later
 %
 % kriging: distribution of site positions -> grid occupation
-%
-% kai wirtz (hereon) Dec 2023
 %
 vc=1; minc=100;
 

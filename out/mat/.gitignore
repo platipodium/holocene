@@ -1,3 +1,6 @@
+# SPDX-FileContributor: Kai Wirtz <kai.wirtz@hereon.de>
+# SPDX-License-Identifier: CC0-1.0
+# SPDX-FileCopyrightText: 2023-2024 Helmholtz-Zentrum hereon GmbH
 # File: .cache/.gitignore
 # Ignore everything in this directory
 *

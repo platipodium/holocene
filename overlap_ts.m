@@ -1,7 +1,9 @@
+% SPDX-FileCopyrightText: 2023-2024 Helmholtz-Zentrum hereon GmbH
+% SPDX-FileContributor: Kai W. Wirtz <kai.wirtz@hereon.de>
+% SPDX-License-Identifier: GPL-3.0-or-later
 %
 % calc and plot overlap between time-series
 %
-% kai wirtz (HZG) 2023
 %clear all; close all;
 load_pars; % sets common parameters (scdir, cc, latlim, regs)
 timelim=[2.8 10.2];

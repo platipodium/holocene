@@ -1,7 +1,8 @@
+% SPDX-FileCopyrightText: 2023-2024 Helmholtz-Zentrum hereon GmbH
+% SPDX-FileContributor: Kai W. Wirtz  <kai.wirtz@hereon.de>
+% SPDX-License-Identifier: GPL-3.0-or-later
 %
 % moving average with distance decaying filter
-%
-% kai wirtz (2023)
 %
 function [arg]=movweighavg(times,values,window,offset)
 

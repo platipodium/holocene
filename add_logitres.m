@@ -1,8 +1,9 @@
+% SPDX-FileCopyrightText: 2023-2024 Helmholtz-Zentrum hereon GmbH
+% SPDX-FileContributor: Kai W. Wirtz  <kai.wirtz@hereon.de>
+% SPDX-License-Identifier: GPL-3.0-or-later
 %
 % load logit model results and
 %  store low-high-pass filtered probability difference to matrix
-%
-% kai wirtz (hereon) Dec 2023
 %
 load([scdir 'target_ts_0.mat']); %'dat','legdat'
 nd0 = length(legdat); %size of old data matrix

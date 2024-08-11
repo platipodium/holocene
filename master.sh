@@ -1,6 +1,6 @@
 #! /bin/bash
 # SPDX-FileContributor: Kai Wirtz <kai.wirtz@hereon.de>
-# SPDX-License-Identifier: GPL-v3-or-later
+# SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: 2023-2024 Helmholtz-Zentrum hereon GmbH
 
 # Last change Jan 28, 2024

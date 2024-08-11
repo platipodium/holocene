@@ -1,7 +1,9 @@
+% SPDX-FileCopyrightText: 2023-2024 Helmholtz-Zentrum hereon GmbH
+% SPDX-FileContributor: Kai W. Wirtz  <kai.wirtz@hereon.de>
+% SPDX-License-Identifier: GPL-3.0-or-later
 %
 % merge C14 databases, create grid, and plot sites
 %
-% kai wirtz (hereon) Dec 2023
 %
 close all; %clear all
 addpath('~/tools/m_map'); %
