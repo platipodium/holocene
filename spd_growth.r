@@ -1,3 +1,9 @@
+# SPDX-FileCopyrightText: 2023-204 Helmholtz-Zentrum hereon GmbH
+# SPDX-FileCopyrightText: 2024 2023-2024 Helmholtz-Zentrum hereon GmbH
+# SPDX-FileContributor: Kai W. Wirtz <kai.wirtz@hereon.de>
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+
 # calculates Summed Probability Density (SPD)
 #   and related growth (RGR) for each region and time slice
 #   using an array of methods

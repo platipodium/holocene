@@ -1,33 +1,35 @@
--------------------------------------------------------
-MATLAB and R-scripts for the analysis of
- archaeological C14 and paleoclimate proxy data
- kai wirtz (Hereon) Dec 2023
--------------------------------------------------------
+<!--
+# SPDX-FileContributor: Kai Wirtz <kai.wirtz@hereon.de>
+# SPDX-License-Identifier: CC0-1.0
+# SPDX-FileCopyrightText: 2023-2024 Helmholtz-Zentrum hereon GmbH
+-->
 
-Code and data availability:
-https://github.com/kaiwirtz3/holocene
+# MATLAB and R-scripts for the analysis of archaeological C14 and paleoclimate proxy data
+
+Code and data availability on this repository:  https://github.com/kaiwirtz3/holocene
 
 The MATLAB and R code enables standalone or parallel processing.
-For example, parallel processing of batch jobs can be invoked on HPC by "sbatch --array=1-64 slurm.sh"
 
--------------------------------------------------------
-Requirenments:
-  MATLAB
-   needs packages: 'M_MAP' and 'pca_toolbox'
-   insert/correct installation path in 'addpath('~/tools/m_map')' found in the header of some MATLAB-scripts (foremost load_par.m),
-   or 'addpath('~/tools/pca_toolbox')' in proxy_dtw.m
+> On High Performance Computers (HPC) with the SLURM scheduler, parallel processing of batch jobs can be invoked on HPC by `sbatch --array=1-64 slurm.sh`.
 
-  R
-   needs libraries: rworldmap, rcarbon, R.matlab, RColorBrewer, cluster, sp/sf
+## Requirenments
+
+### MATLAB
+
+ * needs packages: 'M_MAP' and 'pca_toolbox'
+ * insert/correct installation path in `addpath('~/tools/m_map')` found in the header of some MATLAB-scripts (foremost `load_par.m`), or `addpath('~/tools/pca_toolbox')` in `proxy_dtw.m`
+
+###  R
+
+ * needs libraries: rworldmap, rcarbon, R.matlab, RColorBrewer, cluster, sp/sf
    for rcarbon version <1.5 see comments in grid_growth.r ("spweights")
 
--------------------------------------------------------
-Input data
+## Input data
   (in directories c14mat/ paleoclim/ and data/)
 
   Note that the input data are already available in pre-processed binary (MATLAB) format.
 
-  The  C14 dates from the p3k14c dataset were downloaded in Mar 2023 from
+ The  C14 dates from the p3k14c dataset were downloaded in Mar 2023 from
   https://www.nature.com/articles/s41597-022-01118-7/tables/4.
   Updates can be found at https://www.p3k14c.org
   The p3k14c csv/xls file can be converted by "read_dASIS.m" (see outcommented settings) to
@@ -62,13 +64,11 @@ Input data
     bog_std.mat: Northern Irish bog data by Rowan McLaughlin
     seamask_norm_0.05.mat: landmask Europe at 0.05 degree resolution
 
--------------------------------------------------------
-Execution:
--------------
-all scripts can be invoked by a single master shell command: "./master.sh"
- this seriel processing may take some time depending on computational resources;
-time consuming script processing such as of 'spd_growth.r' or 'cluster.r' can be run at a HPC in parallel mode
-(see also slurm.sh)
+## Execution:
+
+all scripts can be invoked by a single master shell command: `./master.sh`
+ this serial processing may take some time depending on computational resources;
+time consuming script processing such as of 'spd_growth.r' or 'cluster.r' can be run at a HPC in parallel mode (see also slurm.sh)
 
 for running R-scripts (e.g."r-example.r"):  start 'R' terminal and type 'source("r-example.r")'
                                 or from (bash) terminal, type  'Rscript r-example.r'
@@ -77,29 +77,27 @@ for running MATLAB-scripts (e.g."m-example.m"): start MATLAB terminal and type '
 --------------------------------------------------------------------
 sequence of script execution and dependencies (see also master.sh)
 
-grid_growth.r   # calculates spatial statistics of SPDs on a 4°x4° grid
+1. grid_growth.r   # calculates spatial statistics of SPDs on a 4°x4° grid
 
-collect.r       # collect/merge grid cells and prepares clustering
+2. collect.r       # collect/merge grid cells and prepares clustering
 
-cluster.r       # create region clusters of C14 sites
+3. cluster.r       # create region clusters of C14 sites
 
-make_grid.m     # spatial kriging on a grid based on cluster points
+4. make_grid.m     # spatial kriging on a grid based on cluster points
   (uses cl_distance.m, make_grid_regions.m)
 
-spd_growth.r    # calculates Summed Probability Density (SPD)
+5. spd_growth.r    # calculates Summed Probability Density (SPD)
                 #   and related growth (RGR) for each region and time slice
   (uses movavg.r) # reads PrePop_ clusti writes AllPop for time slices
 
-
-spd_pooled.r    # calculates SPD and RGR for pooled method
+6. spd_pooled.r    # calculates SPD and RGR for pooled method
                 #reads C14_europe0 (or C14_EA, C14_NIreland), writes AllPop_all
 
-plot_RGR.m      # process and plot calculated growth rates (RGR)
+7. plot_RGR.m      # process and plot calculated growth rates (RGR)
   (uses movavg.m, calc_aravg_rgr.m)
                 # reads AllPop_ writes AllPop_tag_all avg_rgr_  RGR_Comp.png
 
-# --------------------------------------------------------------------------
-# process climate proxy data
+### Process climate proxy data
 proxy_dtw.m     # applies DTW writes dtw_proxydata
   (uses dtw.m by T. Felty, movweighavg.m)
 
@@ -107,8 +105,8 @@ collect_ts.m    # integrate and smooth time-series, merges DTW time segments dat
                 # and includes other times series (e.g. RGR, solar forcing)
   (uses movavg.m, movweighavg.m) # reads AllPop_EA_all avg_rgr_ data/* writes target_ts_0
 
-# collects RGR from time slices
-# plot_varmap_slice %reads AllPop_i
+### collects RGR from time slices
+### plot_varmap_slice %reads AllPop_i
 
 glmloop.r       # run GLM model for different sets of input variables
    (uses do_lgm.r)  # reads target_ts_0, writes glmres*
@@ -117,14 +115,12 @@ glmloop.r       # run GLM model for different sets of input variables
 overlap_ts.m    # calc and plot overlap between time-series
    (uses add_logitres.m and calc_overlap.m)
 
--------------------------------------------------------
-LICENSE:
--------
-If not stated otherwise, the entire analysis software is licensed under
-  the GNU Public License version 3 or later.
-  See <http://www.gnu.org/licenses/gpl-3.0.txt> for the complete terms.
+## License
 
--------------------------------------------------------
-Documentation:
-  see text and equations in Material and Methods of Wirtz et al, Multicentennial cycles in continental demography synchronous with solar activity and climate stability, subm.
+If not stated otherwise, the entire analysis software is licensed under
+the GNU Public License version 3 or later. See <http://www.gnu.org/licenses/gpl-3.0.txt> for the complete terms.
+
+## Documentation
+
+see text and equations in Material and Methods of Wirtz et al, Multicentennial cycles in continental demography synchronous with solar activity and climate stability, subm.
 --------------

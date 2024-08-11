@@ -1,5 +1,10 @@
+#! /bin/bash
+# SPDX-FileContributor: Kai Wirtz <kai.wirtz@hereon.de>
+# SPDX-License-Identifier: GPL-v3-or-later
+# SPDX-FileCopyrightText: 2023-2024 Helmholtz-Zentrum hereon GmbH
+
+# Last change Jan 28, 2024
 # master bash script for the joint analysis of archaeological C14 and paleo-climate proxy data
-# kai wirtz Dec 2023
 # edit scdir='out/'; and 'addpath('~/tools/m_map');' in load_pars.m
 
 #  reads C14_europe_*  saves eurogrid_*.bin
