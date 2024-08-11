@@ -6,6 +6,26 @@ Files: c14mat/C14_*.mat
 Copyright: 2021 unknown
 License: unknown
 
+Files: c14mat/C14_dASIS.xlsx
+Copyright: unknown
+License: unknown
+
 Files: paleoclim/*mat
 Copyright: 2021-2024 Helmholtz-Zentrum hereon GmbH
 License: CC-BY-SA-4.0
+
+Files: data/*mat
+Copyright: 2021-2024 Helmholtz-Zentrum hereon GmbH
+License: CC-BY-SA-4.0
+
+Files: data/Steinhilber2012_Solar.dat
+Copyright: 2012 NOAA National Center for Environmental Information
+License: CC-BY-SA-4.0
+
+Files: out/europe-high.mat
+Copyright: 2021-2024 Helmholtz-Zentrum hereon GmbH
+License: CC-BY-SA-4.0
+
+Files: legdat.dat
+Copyright: 2021-2024 Helmholtz-Zentrum hereon GmbH
+License: CC0-1.0
