@@ -31,14 +31,13 @@ dependencies:
   - openssl
   - pango
   - pip
-  - r-base
+  - python=3.12
   - r-matlab
   - r-rcolorbrewer
   - r-pacman
   - r-raster
   - r-sf
   - r-terra
-  - r-rasterstats
   - r-rworldmap
   - udunits2
   - xz

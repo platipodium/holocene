@@ -3,20 +3,20 @@ Upstream-Contact: Kai W. Wirtz <kai.wirtz@hereon.de>
 Source: https://github.com/kaiwirtz2/holocene
 
 Files: c14mat/C14_*.mat
-Copyright: 2021 unknown
-License: unknown
+Copyright: 2021-2024 Helmholtz-Zentrum hereon GmbH
+License: CC-BY-4.0
 
 Files: c14mat/C14_dASIS.xlsx
 Copyright: unknown
 License: unknown
 
 Files: paleoclim/*mat
-Copyright: 2021-2024 Helmholtz-Zentrum hereon GmbH
-License: CC-BY-SA-4.0
+Copyright: 2012-2024 Helmholtz-Zentrum hereon GmbH
+License: CC-BY-4.0
 
-Files: data/*mat
+Files: data/*mat out/*mat
 Copyright: 2021-2024 Helmholtz-Zentrum hereon GmbH
-License: CC-BY-SA-4.0
+License: CC-BY-4.0
 
 Files: data/Steinhilber2012_Solar.dat
 Copyright: 2012 NOAA National Center for Environmental Information
@@ -24,7 +24,7 @@ License: CC-BY-SA-4.0
 
 Files: out/europe-high.mat
 Copyright: 2021-2024 Helmholtz-Zentrum hereon GmbH
-License: CC-BY-SA-4.0
+License: CC-BY-4.0
 
 Files: legdat.dat
 Copyright: 2021-2024 Helmholtz-Zentrum hereon GmbH
