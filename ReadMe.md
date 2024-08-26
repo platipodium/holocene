@@ -124,3 +124,16 @@ the GNU Public License version 3 or later. See <http://www.gnu.org/licenses/gpl-
 
 see text and equations in Material and Methods of Wirtz et al, Multicentennial cycles in continental demography synchronous with solar activity and climate stability, subm.
 --------------
+
+
+## Date preprocessing
+
+### Archaeological data
+
+The original dASIS dataset was filtered end enriched with the P3K14C dataset.  The combined dataset was spatially fuzzified and overlaps were removed.  If you use this dataset for Europe, please cite our dataset, and - either/or the dASIS and P314K dataset.
+
+### Paleoclimate data
+
+The paleoclimate data was obtained from the PANGAEA and NOAA archives.  Many of the data not available in these archives was digitized from the graphics in the original publication.  All data sources are cited in the supplementary material. 
+
+If you use the combined dataset provided here, we ask you to cite this publication, and -- if highlighting a particular source -- also the original dataset.
