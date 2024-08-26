@@ -1,0 +1,46 @@
+#! /bin/env R
+# SPDX-FileContributor: Carsten Lemmen <carsten.lemmen@hereon.de
+# SPDX-License-Identifier: CC0-1.0
+# SPDX-FileCopyrightText: 2024 Helmholtz-Zentrum hereon GmbH
+#
+# Conda environment load with the command `conda env create -n holoce -f environment.yaml`
+name: holocene
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - bzip2
+  - c-ares
+  - ca-certificates
+  - cairo
+  - curl
+  - expat
+  - fontconfig
+  - fonts-conda-ecosystem
+  - freetype
+  - fribidi
+  - gdal
+  - gmp
+  - graphite2
+  - gsl
+  - harfbuzz
+  - icu
+  - isl
+  - krb5
+  - make
+  - openssl
+  - pango
+  - pip
+  - r-base
+  - r-matlab
+  - r-rcolorbrewer
+  - r-pacman
+  - r-raster
+  - r-sf
+  - r-terra
+  - r-rasterstats
+  - r-rworldmap
+  - udunits2
+  - xz
+  - zlib
+  - zstd

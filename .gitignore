@@ -3,4 +3,5 @@
 # SPDX-FileCopyrightText: 2024 Helmholtz-Zentrum hereon GmbH
 
 ErrorLogFile
-LogFile
+LogFile.RData
+.Rhistory
