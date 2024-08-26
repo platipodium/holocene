@@ -4,7 +4,7 @@
 # SPDX-FileCopyrightText: 2023-2024 Helmholtz-Zentrum hereon GmbH
 -->
 
-# MATLAB and R-scripts for the analysis of archaeological C14 and paleoclimate proxy data
+# Data, MATLAB and R-scripts for the analysis of archaeological C14 and paleoclimate proxy data
 
 Code and data availability on this repository:  https://github.com/kaiwirtz3/holocene
 
@@ -12,41 +12,58 @@ The MATLAB and R code enables standalone or parallel processing.
 
 > On High Performance Computers (HPC) with the SLURM scheduler, parallel processing of batch jobs can be invoked on HPC by `sbatch --array=1-64 slurm.sh`.
 
-## Requirenments
+## Requirements
 
 ### MATLAB
 
- * needs packages: 'M_MAP' and 'pca_toolbox'
+ * needs packages: `m_map` and `pca_toolbox`
+ * you can get the `pca_toolbox` from https://www.mathworks.com/matlabcentral/fileexchange/134751-pca-toolbox-for-matlab
+ * you can obtain `m_map` from https://www.eoas.ubc.ca/~rich/map.html
  * insert/correct installation path in `addpath('~/tools/m_map')` found in the header of some MATLAB-scripts (foremost `load_par.m`), or `addpath('~/tools/pca_toolbox')` in `proxy_dtw.m`
 
-###  R
+### R
 
  * needs libraries: rworldmap, rcarbon, R.matlab, RColorBrewer, cluster, sp/sf
    for rcarbon version <1.5 see comments in grid_growth.r ("spweights")
+ * we provide a conda environment that takes care of most of these dependencies, enumerated in the file `environment.yaml` and some further R-specific dependencies in `environment.r`. The below commands should get you a reproducible environment
+ * if conda is not available or broken, then installing R manually in your operating system, followed by `Rscript environment.r` should also work):
+
+```
+conda env create -n holocene -f environment.yaml
+conda activate holocene
+Rscript environment.r
+````
 
 ## Input data
-  (in directories c14mat/ paleoclim/ and data/)
 
-  Note that the input data are already available in pre-processed binary (MATLAB) format.
+(in directories `c14mat/`, `paleoclim/`, and `data/`)
 
- The  C14 dates from the p3k14c dataset were downloaded in Mar 2023 from
-  https://www.nature.com/articles/s41597-022-01118-7/tables/4.
-  Updates can be found at https://www.p3k14c.org
-  The p3k14c csv/xls file can be converted by "read_dASIS.m" (see outcommented settings) to
-  "c14mat/p3k14c.mat" (needed by "merge_C14data.m")
-  The new compilation refers to the database dASIS which in turn collects previous databases
-  and adds own dates compiled by Gronenborn/Antunes at LEIZA Mainz
-  The xls file "c14mat/C14_dASIS.xlsx" was converted by runing "read_dASIS.m"
-  to "c14mat/C14_dASIS.mat"
-  Using the script "merge_C14data.m", all binary files for pooled and gridded were produced
+> Note that the input data are already available in pre-processed binary (MATLAB) format.
 
-   c14mat/C14_europe_[1-64].mat:  radiocarbon dates for Europe on a coarse grid
-   c14mat/C14_europe0.mat:        radiocarbon dates for Europe pooled
-   c14mat/C14_[cont].mat:         radiocarbon dates for continents
-   c14mat/C14_NIreland.mat:       radiocarbon dates for North Ireland
-   c14mat/C14_dASIS.xlsx:         compilation of (dASIS) C14v dates in XLS format
+### Archaeological data (C14)
 
-  collected paleoclimate proxy time-series and meta-info in
+The  C14 dates from the p3k14c dataset were downloaded in March 2023 from
+https://www.nature.com/articles/s41597-022-01118-7/tables/4.
+Updates can be found at https://www.p3k14c.org
+The p3k14c csv/xls file can be converted by `read_dASIS.m` (see outcommented settings) to
+`c14mat/p3k14c.mat` (needed by `merge_C14data.m`)
+
+The new compilation refers to the database dASIS which in turn collects previous databases and adds own dates compiled by Gronenborn/Antunes at LEIZA Mainz. The xls file `c14mat/C14_dASIS.xlsx` was converted by runing `read_dASIS.m`to `c14mat/C14_dASIS.mat`.
+
+Using the script `merge_C14data.m`, all binary files for pooled and gridded were produced
+
+* c14mat/C14_europe_[1-64].mat:  radiocarbon dates for Europe on a coarse grid
+* c14mat/C14_europe0.mat:        radiocarbon dates for Europe pooled
+* c14mat/C14_[cont].mat:         radiocarbon dates for continents
+* c14mat/C14_NIreland.mat:       radiocarbon dates for North Ireland
+* c14mat/C14_dASIS.xlsx:         compilation of (dASIS) C14v dates in XLS format
+
+All of the collected data were available under open access licences.  These are RADON and RADONb (Rinne et al. 2024, Hinz et al. 2012);  P3K14C under CC0-1.0 (Bird et al. 2022); AIDA under CC-BY-4.0 (Palmisano et al. 2022); MedAfriCarbon under CC-BY-4.0 (Lucarini et al. 2020); Aegean History under CC-BY-4.0 (Ktasanis et al. 2020); Chapple (2018) under CC-BY-5.0; EUBAR (Capuzzo 2014); and NAKALA under CC-BY-4.0 (Perrin 2021)
+
+
+### Paleoclimate data
+
+C ollected paleoclimate proxy time-series and meta-info in
     paleoclim/InEur_27_920.mat:   index ('InEur') to proxies in EU domain
     paleoclim/proxydescription_488_0_11.00_1.70.mat: MATLAB structure ("evinfo") with paleoclimate info
       for 209 global records. the 98 used indices (for Europe) are given by 'InEur'
@@ -124,61 +141,6 @@ the GNU Public License version 3 or later. See <http://www.gnu.org/licenses/gpl-
 
 see text and equations in Material and Methods of Wirtz et al, Multicentennial cycles in continental demography synchronous with solar activity and climate stability, subm.
 --------------
-
-
-## Date preprocessing
-
-### Archaeological data
-
-The original dASIS dataset was filtered end enriched with the P3K14C dataset.  The combined dataset was spatially fuzzified and overlaps were removed.  If you use this dataset for Europe, please cite our dataset, and - either/or the dASIS and P314K dataset.
-
-#### Radon
-Open Access 
-
-Rinne et al. 2024: Christoph Rinne/Jutta Kneisel/Martin Hinz/Martin Furholt/Nina Krischke/Johannes Müller/Dirk Raetzel-Fabian/Marcel Rodens/Karl-Göran Sjögren/Helle Vandkilde and Hans-Peter Wotzka, Rado.NB. In: https://radonb.ufg.uni-kiel.de. 
-
-
-Martin Hinz, Martin Furholt, Johannes Müller, Dirk Raetzel-Fabian, Christoph Rinne, Karl-Göran Sjögren, Hans-Peter Wotzka, RADON - Radiocarbon dates online 2012. Central European database of 14C dates for the Neolithic and Early Bronze Age. www.jungsteinsite.de, 2012, 1-4.
-
-#### P3K14C
-
-CC0-1.0
-
-Bird, D., Miranda, L., Vander Linden, M. et al. p3k14c, a synthetic global database of archaeological radiocarbon dates. Sci Data 9, 27 (2022). https://doi.org/10.1038/s41597-022-01118-7
-
-#### AIDA
-
-CC-BY-4.0
-
-Alessio Palmisano, Andrew Bevan, Alexander Kabelindde, Neil Roberts, & Stephen Shennan. (2022). AIDA (Archive of Italian radiocarbon DAtes) (v3.0) [Data set]. Zenodo. https://doi.org/10.5281/zenodo.5846835
-
-#### MedAfriCarbon
-
-CC-BY-4.0
-
-Lucarini, G., Wilkinson, T., Crema, E. R., Palombini, A., Bevan, A., & Broodbank, C. (2020). The MedAfriCarbon radiocarbon database and web application. Archaeological dynamics in Mediterranean Africa, ca. 9600-700 BC [Data set]. In Journal of Open Archaeology Data (1.0.3). Zenodo. https://doi.org/10.5281/zenodo.3689716
-
-#### Aegean History
-
-CC-BY-4.0
-
-Katsianis, Markos; Bevan, Andrew; Styliaras, Giorgos; Maniatis, Yannis (2020). Dataset for: An Aegean history and archaeology written through radiocarbon dates. University College London. Dataset. https://doi.org/10.5522/04/12489137.v1
-
-#### Chapple
-
-CC-BY-4.0
-
-Chapple, R. M. (2018) ‘Catalogue of radiocarbon determinations & dendrochronology dates’. Zenodo. doi: 10.5281/zenodo.3367518.
-
-#### EUBAR
-
-CAPUZZO G. 2014. Space-temporal analysis of radiocarbon evidence and associated archaeological record: from Danube to Ebro rivers and from Bronze to Iron ages, Ph.D. Thesis discussed at the Autonomous University of Barcelona.
-
-#### NAKALA 
-
-CC-BY-4.0
-
-Perrin, Thomas (2021) «BDA - Base de Données Archéologiques» [Dataset] NAKALA. https://doi.org/10.34847/nkl.dde9fnm8
 
 
 ### Paleoclimate data
