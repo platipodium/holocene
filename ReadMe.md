@@ -132,6 +132,55 @@ see text and equations in Material and Methods of Wirtz et al, Multicentennial c
 
 The original dASIS dataset was filtered end enriched with the P3K14C dataset.  The combined dataset was spatially fuzzified and overlaps were removed.  If you use this dataset for Europe, please cite our dataset, and - either/or the dASIS and P314K dataset.
 
+#### Radon
+Open Access 
+
+Rinne et al. 2024: Christoph Rinne/Jutta Kneisel/Martin Hinz/Martin Furholt/Nina Krischke/Johannes Müller/Dirk Raetzel-Fabian/Marcel Rodens/Karl-Göran Sjögren/Helle Vandkilde and Hans-Peter Wotzka, Rado.NB. In: https://radonb.ufg.uni-kiel.de. 
+
+
+Martin Hinz, Martin Furholt, Johannes Müller, Dirk Raetzel-Fabian, Christoph Rinne, Karl-Göran Sjögren, Hans-Peter Wotzka, RADON - Radiocarbon dates online 2012. Central European database of 14C dates for the Neolithic and Early Bronze Age. www.jungsteinsite.de, 2012, 1-4.
+
+#### P3K14C
+
+CC0-1.0
+
+Bird, D., Miranda, L., Vander Linden, M. et al. p3k14c, a synthetic global database of archaeological radiocarbon dates. Sci Data 9, 27 (2022). https://doi.org/10.1038/s41597-022-01118-7
+
+#### AIDA
+
+CC-BY-4.0
+
+Alessio Palmisano, Andrew Bevan, Alexander Kabelindde, Neil Roberts, & Stephen Shennan. (2022). AIDA (Archive of Italian radiocarbon DAtes) (v3.0) [Data set]. Zenodo. https://doi.org/10.5281/zenodo.5846835
+
+#### MedAfriCarbon
+
+CC-BY-4.0
+
+Lucarini, G., Wilkinson, T., Crema, E. R., Palombini, A., Bevan, A., & Broodbank, C. (2020). The MedAfriCarbon radiocarbon database and web application. Archaeological dynamics in Mediterranean Africa, ca. 9600-700 BC [Data set]. In Journal of Open Archaeology Data (1.0.3). Zenodo. https://doi.org/10.5281/zenodo.3689716
+
+#### Aegean History
+
+CC-BY-4.0
+
+Katsianis, Markos; Bevan, Andrew; Styliaras, Giorgos; Maniatis, Yannis (2020). Dataset for: An Aegean history and archaeology written through radiocarbon dates. University College London. Dataset. https://doi.org/10.5522/04/12489137.v1
+
+#### Chapple
+
+CC-BY-4.0
+
+Chapple, R. M. (2018) ‘Catalogue of radiocarbon determinations & dendrochronology dates’. Zenodo. doi: 10.5281/zenodo.3367518.
+
+#### EUBAR
+
+CAPUZZO G. 2014. Space-temporal analysis of radiocarbon evidence and associated archaeological record: from Danube to Ebro rivers and from Bronze to Iron ages, Ph.D. Thesis discussed at the Autonomous University of Barcelona.
+
+#### NAKALA 
+
+CC-BY-4.0
+
+Perrin, Thomas (2021) «BDA - Base de Données Archéologiques» [Dataset] NAKALA. https://doi.org/10.34847/nkl.dde9fnm8
+
+
 ### Paleoclimate data
 
 The paleoclimate data was obtained from the PANGAEA and NOAA archives.  Many of the data not available in these archives was digitized from the graphics in the original publication.  All data sources are cited in the supplementary material. 
