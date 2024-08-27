@@ -32,6 +32,7 @@ dependencies:
   - pango
   - pip
   - python=3.12
+  - r-lintr
   - r-matlab
   - r-rcolorbrewer
   - r-pacman

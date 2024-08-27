@@ -50,3 +50,10 @@ repos:
             "--schemafile",
             "https://zenodraft.github.io/metadata-schema-zenodo/0.3.0/schema.json",
           ]
+  # - repo: https://github.com/lorenzwalthert/precommit
+  #   rev: v0.4.3
+  #   hooks:
+  #   -   id: lintr
+  #       name: "Warn on R linting issues"
+  #       files: ^\.[Rr]
+  #       args: [--warn_only, --key=value]
