@@ -5,8 +5,16 @@
 
 # calculates spatial statistics of SPDs on a 4°x4° grid
 #
-# kai wirtz (Hereon) 2023
-#
+# checks for input arguments that control partial computation
+#    in a parallel mode
+# Examples: "Rscript grid_growth.r $SLURM_ARRAY_TASK_ID"
+#                within a slurm.sh
+#           "Rscript grid_growth.r 1 3"
+#                to process only from patch 1 to 3
+#           "for (( i=1; i<9; i++ )); do \
+#                  (Rscript grid_growth.r $(expr $i \* 8 - 7) $(expr $i \* 8) &) ;
+#            done"
+
 library(rworldmap)
 library(rcarbon)
 library('R.matlab')
@@ -14,13 +22,6 @@ library("RColorBrewer")
 library(sf)
 
 scdir='out/'
-
-# checks for input arguments that control partial computation
-#    in a parallel mode
-# Examples: "Rscript grid_growth.r $SLURM_ARRAY_TASK_ID"
-#                within a slurm.sh
-#           "Rscript grid_growth.r 1 3"
-#                to process only from patch 1 to 3
 
 myargs = commandArgs(trailingOnly=TRUE)
 if (length(myargs)>0) {
