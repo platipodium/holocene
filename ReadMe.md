@@ -6,11 +6,9 @@
 
 # Data, MATLAB and R-scripts for the analysis of archaeological C14 and paleoclimate proxy data
 
-Code and data availability on this repository:  https://github.com/kaiwirtz3/holocene
+Code and data availability on this repository:  https://github.com/kaiwirtz3/holocene, also archived on Zenodo as https://zenodo.org/doi/10.5281/zenodo.10467363.
 
-The MATLAB and R code enables standalone or parallel processing.
-
-> On High Performance Computers (HPC) with the SLURM scheduler, parallel processing of batch jobs can be invoked on HPC by `sbatch --array=1-64 slurm.sh`.
+> The MATLAB and R code enables standalone or parallel processing. On High Performance Computers (HPC) with the SLURM scheduler, parallel processing of batch jobs can be invoked on HPC by `sbatch --array=1-64 slurm.sh`.
 
 ## Requirements
 
@@ -70,7 +68,7 @@ for 209 global records. the 98 used indices (for Europe) are given by 'InEur'
 
 meta-info: e.g., "Proxy" for proxy type (e.g. d18O), "Plotname" for site name, "Latitude", "Longitude"
 or "Source" for bibtex-key of original reference
-      
+
 * evinfo.time:  cells with vectors containing the time values of a record
 * evinfo.value: cells with vectors containing the normalized values
 
@@ -83,7 +81,7 @@ misc time-series or fields
 * `bog_std.mat`: Northern Irish bog data by Rowan McLaughlin
 * `seamask_norm_0.05.mat`: landmask Europe at 0.05 degree resolution
 
-The paleoclimate data was obtained from the PANGAEA and NOAA archives.  Many of the data not available in these archives was digitized from the graphics in the original publication.  All data sources are cited in the supplementary material. 
+The paleoclimate data was obtained from the PANGAEA and NOAA archives.  Many of the data not available in these archives was digitized from the graphics in the original publication.  All data sources are cited in the supplementary material.
 
 If you use the combined dataset provided here, we ask you to cite this publication, and -- if highlighting a particular source -- also the original dataset.
 
@@ -115,7 +113,7 @@ time consuming script processing such as of 'spd_growth.r' or 'cluster.r' can be
 collects RGR from time slices and `plot_varmap_slice` %reads AllPop_i
 
 3. `glmloop.r`       # run GLM model for different sets of input variables (uses do_lgm.r)  # reads target_ts_0, writes glmres*
-   
+
 [ 4. add_logitres.m  # add logit model results to matrix ]
 overlap_ts.m    # calc and plot overlap between time-series
    (uses add_logitres.m and calc_overlap.m)

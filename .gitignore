@@ -6,3 +6,4 @@ ErrorLogFile
 LogFile
 .RData
 .Rhistory
+out/area_0.05_3000_9800.mat

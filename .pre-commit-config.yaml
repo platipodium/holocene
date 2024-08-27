@@ -1,0 +1,52 @@
+# SPDX-FileCopyrightText: 2022-2024 Helmholtz-Zentrum hereon GmbH
+# SPDX-License-Identifier: CC0-1.0
+# SPDX-FileContributor: Carsten Lemmen <carsten.lemmen@hereon.de
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-added-large-files
+        args: ["--maxkb=1000"]
+      - id: check-merge-conflict
+      - id: check-symlinks
+      - id: check-toml
+      - id: check-xml
+      - id: check-yaml
+  #-   repo: https://github.com/jumanjihouse/pre-commit-hooks
+  #    rev: master
+  #    hooks:
+  #    -   id: markdownlint
+  # -   repo: https://github.com/Data-Liberation-Front/csvlint.rb
+  #     rev: v1.2.0
+  #     hooks:
+  #       - id: csvlint
+  #-   repo: https://github.com/fsfe/reuse-tool
+  #    rev: v1.1.2
+  #    hooks:
+  #      - id: reuse
+  #- repo: https://github.com/alan-turing-institute/CleverCSV-pre-commit
+  #  rev: v0.6.6 # or any later version
+  #  hooks:
+  #    - id: clevercsv-standardize
+  # - repo: https://github.com/pre-commit/mirrors-prettier
+  #   rev: "v4.0.0-alpha.8"
+  #   hooks:
+  #     - id: prettier
+  # For the following, an up-to-date zenode deposit schema is
+  # need which is currently broken upstream
+  - repo: https://github.com/python-jsonschema/check-jsonschema
+    rev: 0.27.3
+    hooks:
+      - id: check-jsonschema
+        name: "Check Zenodo Metadata"
+        files: ^\.zenodo.json$
+        types: [json]
+        args:
+          [
+            "--schemafile",
+            "https://zenodraft.github.io/metadata-schema-zenodo/0.3.0/schema.json",
+          ]
