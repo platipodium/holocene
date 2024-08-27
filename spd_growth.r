@@ -36,7 +36,7 @@ if (length(myargs)>0) {
  ti0 =  1+(an%%nbrk)
  ti1 = ti0
  } else { #all sub-domains
- ti0=18
+ ti0=1 # 1
  ti1=nbrk
  tagi0=1
  tagi1=ntag

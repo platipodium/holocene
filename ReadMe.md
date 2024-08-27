@@ -58,77 +58,65 @@ Using the script `merge_C14data.m`, all binary files for pooled and gridded were
 * c14mat/C14_NIreland.mat:       radiocarbon dates for North Ireland
 * c14mat/C14_dASIS.xlsx:         compilation of (dASIS) C14v dates in XLS format
 
-All of the collected data were available under open access licences.  These are RADON and RADONb (Rinne et al. 2024, Hinz et al. 2012);  P3K14C under CC0-1.0 (Bird et al. 2022); AIDA under CC-BY-4.0 (Palmisano et al. 2022); MedAfriCarbon under CC-BY-4.0 (Lucarini et al. 2020); Aegean History under CC-BY-4.0 (Ktasanis et al. 2020); Chapple (2018) under CC-BY-5.0; EUBAR (Capuzzo 2014); and NAKALA under CC-BY-4.0 (Perrin 2021)
-
+All of the collected data were available under open access licences.  These are RADON and RADONb (Rinne et al. 2024, Hinz et al. 2012);  P3K14C under CC0-1.0 (Bird et al. 2022); AIDA under CC-BY-4.0 (Palmisano et al. 2022); MedAfriCarbon under CC-BY-4.0 (Lucarini et al. 2020); Aegean History under CC-BY-4.0 (Ktasanis et al. 2020); Chapple (2018) under CC-BY-4.0; EUBAR (Capuzzo 2014); and NAKALA under CC-BY-4.0 (Perrin 2021)
 
 ### Paleoclimate data
 
-C ollected paleoclimate proxy time-series and meta-info in
-    paleoclim/InEur_27_920.mat:   index ('InEur') to proxies in EU domain
-    paleoclim/proxydescription_488_0_11.00_1.70.mat: MATLAB structure ("evinfo") with paleoclimate info
-      for 209 global records. the 98 used indices (for Europe) are given by 'InEur'
-      meta-info:
-       e.g., "Proxy" for proxy type (e.g. d18O), "Plotname" for site name, "Latitude", "Longitude"
-        or "Source" for bibtex-key of original reference
-      evinfo.time:  cells with vectors containing the time values of a record
-      evinfo.value: cells with vectors containing the normalized values
-    Note that the MATLAB structure 'evinfo' and its fields can be converted into an R dataframe
-     using the R.matlab package
+Collected paleoclimate proxy time-series and meta-info in
 
-  misc time-series or fields
-    SA_spd_rgr.mat: RGR South America from digitized and calculated from Riris et al 2019
-    Steinhilber2012_Solar.dat: Total Solar Irradiance (TSI) from Steinhilber et al 2012
-    bog_std.mat: Northern Irish bog data by Rowan McLaughlin
-    seamask_norm_0.05.mat: landmask Europe at 0.05 degree resolution
+* `paleoclim/InEur_27_920.mat`:   index ('InEur') to proxies in EU domain
+* `paleoclim/proxydescription_488_0_11.00_1.70.mat`: MATLAB structure ("evinfo") with paleoclimate info
+for 209 global records. the 98 used indices (for Europe) are given by 'InEur'
 
-## Execution:
+meta-info: e.g., "Proxy" for proxy type (e.g. d18O), "Plotname" for site name, "Latitude", "Longitude"
+or "Source" for bibtex-key of original reference
+      
+* evinfo.time:  cells with vectors containing the time values of a record
+* evinfo.value: cells with vectors containing the normalized values
 
-all scripts can be invoked by a single master shell command: `./master.sh`
+> Note that the MATLAB structure 'evinfo' and its fields can be converted into an R dataframe using the R.matlab package
+
+misc time-series or fields
+
+* `SA_spd_rgr.mat`: RGR South America from digitized and calculated from Riris et al 2019
+* `Steinhilber2012_Solar.dat`: Total Solar Irradiance (TSI) from Steinhilber et al 2012
+* `bog_std.mat`: Northern Irish bog data by Rowan McLaughlin
+* `seamask_norm_0.05.mat`: landmask Europe at 0.05 degree resolution
+
+The paleoclimate data was obtained from the PANGAEA and NOAA archives.  Many of the data not available in these archives was digitized from the graphics in the original publication.  All data sources are cited in the supplementary material. 
+
+If you use the combined dataset provided here, we ask you to cite this publication, and -- if highlighting a particular source -- also the original dataset.
+
+## Execution
+
+All scripts can be invoked by a single master shell command: `./master.sh`
  this serial processing may take some time depending on computational resources;
 time consuming script processing such as of 'spd_growth.r' or 'cluster.r' can be run at a HPC in parallel mode (see also slurm.sh)
 
-for running R-scripts (e.g."r-example.r"):  start 'R' terminal and type 'source("r-example.r")'
+* for running R-scripts (e.g."r-example.r"):  start 'R' terminal and type 'source("r-example.r")'
                                 or from (bash) terminal, type  'Rscript r-example.r'
-for running MATLAB-scripts (e.g."m-example.m"): start MATLAB terminal and type 'm-example'
+* for running MATLAB-scripts (e.g."m-example.m"): start MATLAB terminal and type 'm-example'
                                 or from (bash) terminal, type  'matlab -nodesktop -r "try; m-example; catch; end; quit" '
---------------------------------------------------------------------
-sequence of script execution and dependencies (see also master.sh)
+
+### Sequence of script execution and dependencies (see also master.sh)
 
 1. grid_growth.r   # calculates spatial statistics of SPDs on a 4°x4° grid
-
 2. collect.r       # collect/merge grid cells and prepares clustering
-
 3. cluster.r       # create region clusters of C14 sites
-
-4. make_grid.m     # spatial kriging on a grid based on cluster points
-  (uses cl_distance.m, make_grid_regions.m)
-
-5. spd_growth.r    # calculates Summed Probability Density (SPD)
-                #   and related growth (RGR) for each region and time slice
-  (uses movavg.r) # reads PrePop_ clusti writes AllPop for time slices
-
-6. spd_pooled.r    # calculates SPD and RGR for pooled method
-                #reads C14_europe0 (or C14_EA, C14_NIreland), writes AllPop_all
-
-7. plot_RGR.m      # process and plot calculated growth rates (RGR)
-  (uses movavg.m, calc_aravg_rgr.m)
-                # reads AllPop_ writes AllPop_tag_all avg_rgr_  RGR_Comp.png
+4. make_grid.m     # spatial kriging on a grid based on cluster points (uses cl_distance.m, make_grid_regions.m)
+5. spd_growth.r    # calculates Summed Probability Density (SPD) and related growth (RGR) for each region and time slice (uses movavg.r) # reads PrePop_ clusti writes AllPop for time slices
+6. spd_pooled.r    # calculates SPD and RGR for pooled method, dreads C14_europe0 (or C14_EA, C14_NIreland), writes AllPop_all
+7. plot_RGR.m      # process and plot calculated growth rates (RGR) (uses movavg.m, calc_aravg_rgr.m); reads AllPop_ writes AllPop_tag_all avg_rgr_  RGR_Comp.png
 
 ### Process climate proxy data
-proxy_dtw.m     # applies DTW writes dtw_proxydata
-  (uses dtw.m by T. Felty, movweighavg.m)
+1. `proxy_dtw.m`     # applies DTW writes dtw_proxydata (uses dtw.m by T. Felty, movweighavg.m)
+2. `collect_ts.m`    # integrate and smooth time-series, merges DTW time segments data nd includes other times series (e.g. RGR, solar forcing) (uses movavg.m, movweighavg.m); reads AllPop_EA_all avg_rgr_ data/* writes target_ts_0
 
-collect_ts.m    # integrate and smooth time-series, merges DTW time segments data
-                # and includes other times series (e.g. RGR, solar forcing)
-  (uses movavg.m, movweighavg.m) # reads AllPop_EA_all avg_rgr_ data/* writes target_ts_0
+collects RGR from time slices and `plot_varmap_slice` %reads AllPop_i
 
-### collects RGR from time slices
-### plot_varmap_slice %reads AllPop_i
-
-glmloop.r       # run GLM model for different sets of input variables
-   (uses do_lgm.r)  # reads target_ts_0, writes glmres*
+3. `glmloop.r`       # run GLM model for different sets of input variables (uses do_lgm.r)  # reads target_ts_0, writes glmres*
    
-[ add_logitres.m  # add logit model results to matrix ]
+[ 4. add_logitres.m  # add logit model results to matrix ]
 overlap_ts.m    # calc and plot overlap between time-series
    (uses add_logitres.m and calc_overlap.m)
 
@@ -137,14 +125,8 @@ overlap_ts.m    # calc and plot overlap between time-series
 If not stated otherwise, the entire analysis software is licensed under
 the GNU Public License version 3 or later. See <http://www.gnu.org/licenses/gpl-3.0.txt> for the complete terms.
 
+The collection of archaeological data and the collection of paleoclimate data is licensed under the Creative Commons Attribution (CC-BY-4.0) license.
+
 ## Documentation
 
-see text and equations in Material and Methods of Wirtz et al, Multicentennial cycles in continental demography synchronous with solar activity and climate stability, subm.
---------------
-
-
-### Paleoclimate data
-
-The paleoclimate data was obtained from the PANGAEA and NOAA archives.  Many of the data not available in these archives was digitized from the graphics in the original publication.  All data sources are cited in the supplementary material. 
-
-If you use the combined dataset provided here, we ask you to cite this publication, and -- if highlighting a particular source -- also the original dataset.
+See text and equations in Material and Methods of Wirtz et al, Multicentennial cycles in continental demography synchronous with solar activity and climate stability, subm.
