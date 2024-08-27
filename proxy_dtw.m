@@ -136,7 +136,7 @@ for tl=1:2
   pca = pca_model(datprox(1:np,:)',nmax,'auto');%'
   fprintf('\npca: %1.3f %1.3f\n',pca.cum_var(2),pca.cum_var(nmax));
 
-  we_pca = ones(numprox,1); we_dtw = we_dtw;
+  we_pca = ones(numprox,1); we_dtw = ones(numprox,1);
   % -------------------------------------------------------
   % loop over iterations
   for loop=1:8
