@@ -64,6 +64,7 @@ for tl=1:2
   % initialize and clear variables/vectors
   wps       = zeros(numprox,1); match=wps;
   matchInd  = zeros(1+2,numprox);
+  cDTW_Dist=zeros(numprox,numprox);
   cDTW_sign = cDTW_Dist; cPears=cDTW_Dist;
   cLocD     = cDTW_Dist;
   iv=1; ei=1;
