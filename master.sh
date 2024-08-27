@@ -1,6 +1,14 @@
+#! /bin/bash
+# SPDX-FileContributor: Kai Wirtz <kai.wirtz@hereon.de>
+# SPDX-License-Identifier: GPL-3.0-or-later
+# SPDX-FileCopyrightText: 2023-2024 Helmholtz-Zentrum hereon GmbH
+
+# Last change Aug 26, 2024
 # master bash script for the joint analysis of archaeological C14 and paleo-climate proxy data
-# kai wirtz Dec 2023
 # edit scdir='out/'; and 'addpath('~/tools/m_map');' in load_pars.m
+
+# Prepare the R environment by installing all required packages
+Rscript environment.r
 
 #  reads C14_europe_*  saves eurogrid_*.bin
 Rscript grid_growth.r

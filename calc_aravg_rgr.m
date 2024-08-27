@@ -1,7 +1,8 @@
+% SPDX-FileCopyrightText: 2023-2024 Helmholtz-Zentrum hereon GmbH
+% SPDX-FileContributor: Kai W. Wirtz  <kai.wirtz@hereon.de>
+% SPDX-License-Identifier: GPL-3.0-or-later
 %
 % calculate area based average of RGR
-%
-% kai wirtz (hereon) Dec 2023
 %
 tii=1;
 n=length(wei);

@@ -1,17 +1,8 @@
-function s = nanstd(x,dim)
-%NANMEAN Mean value, ignoring NaNs.
-%   M = NANMEAN(X) returns the sample mean of X, treating NaNs as missing
-%   values.  For vector input, M is the mean value of the non-NaN elements
-%   in X.  For matrix input, M is a row vector containing the mean value of
-%   non-NaN elements in each column.  For N-D arrays, NANMEAN operates
-%   along the first non-singleton dimension.
-%
-%   NANMEAN(X,DIM) takes the mean along dimension DIM of X.
-%
-%   See also MEAN, NANMEDIAN, NANSTD, NANVAR, NANMIN, NANMAX, NANSUM.
+% SPDX-FileCopyrightText: 2021-2024 Helmholtz-Zentrum hereon GmbH
+% SPDX-FileContributor: Carsten Lemmen  <carsten.lemmen@hereon.de>
+% SPDX-License-Identifier: CC0-1.0 
 
-%   Copyright 1993-2004 The MathWorks, Inc.
-%   $Revision: 2.13.4.3 $  $Date: 2004/07/28 04:38:41 $
+function s = nanstd(x,dim)
 
 % Find NaNs and set them to zero
 x(x>1E+9) = NaN;

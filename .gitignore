@@ -1,0 +1,10 @@
+# SPDX-FileContributor: Carsten Lemmen <carsten.lemmen@hereon.de>
+# SPDX-License-Identifier: CC0-1.0
+# SPDX-FileCopyrightText: 2024 Helmholtz-Zentrum hereon GmbH
+
+ErrorLogFile
+LogFile
+.RData
+.Rhistory
+out/area_0.05_3000_9800.mat
+node_modules

@@ -1,3 +1,8 @@
+# SPDX-FileCopyrightText: 2023-2024 Helmholtz-Zentrum hereon GmbH
+# SPDX-FileContributor: Kai W. Wirtz <kai.wirtz@hereon.de>
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+
 # calculates spatial statistics of SPDs on a 4°x4° grid
 #
 # kai wirtz (Hereon) 2023

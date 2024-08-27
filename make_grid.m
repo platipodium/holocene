@@ -1,7 +1,9 @@
+% SPDX-FileCopyrightText: 2023-2024 Helmholtz-Zentrum hereon GmbH
+% SPDX-FileContributor: Kai W. Wirtz  <kai.wirtz@hereon.de>
+% SPDX-License-Identifier: GPL-3.0-or-later
 %
 % spatial kriging on a grid based on cluster points
 %
-% kai wirtz (hereon) Dec 2023
 %function gp = make_grid(offset,dll)
 close all
 clear all

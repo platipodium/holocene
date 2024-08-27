@@ -1,0 +1,31 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Contact: Kai W. Wirtz <kai.wirtz@hereon.de>
+Source: https://github.com/kaiwirtz2/holocene
+
+Files: c14mat/C14_*.mat
+Copyright: 2021-2024 Helmholtz-Zentrum hereon GmbH
+License: CC-BY-4.0
+
+Files: c14mat/C14_dASIS.xlsx
+Copyright: CC-BY-4.0
+License: 2024 Leibniz-Zentrum für Archäologie
+
+Files: paleoclim/*mat
+Copyright: 2012-2024 Helmholtz-Zentrum hereon GmbH
+License: CC-BY-4.0
+
+Files: data/*mat out/*mat
+Copyright: 2021-2024 Helmholtz-Zentrum hereon GmbH
+License: CC-BY-4.0
+
+Files: data/Steinhilber2012_Solar.dat
+Copyright: 2012 NOAA National Center for Environmental Information
+License: CC-BY-SA-4.0
+
+Files: out/europe-high.mat
+Copyright: 2021-2024 Helmholtz-Zentrum hereon GmbH
+License: CC-BY-4.0
+
+Files: legdat.dat
+Copyright: 2021-2024 Helmholtz-Zentrum hereon GmbH
+License: CC0-1.0

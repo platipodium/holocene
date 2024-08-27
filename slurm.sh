@@ -1,4 +1,7 @@
 #!/bin/bash -x
+# SPDX-FileContributor: Kai Wirtz <kai.wirtz@hereon.de>
+# SPDX-License-Identifier: CC0-1.0
+# SPDX-FileCopyrightText: 2023-2024 Helmholtz-Zentrum hereon GmbH
 #SBATCH --ntasks=1
 #SBATCH --output=gg-%j-%a.stdout
 #SBATCH --error=gg-%j-%a.stderr
