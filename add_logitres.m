@@ -5,7 +5,7 @@
 % load logit model results and
 %  store low-high-pass filtered probability difference to matrix
 %
-load([scdir 'target_ts_0.mat']); %'dat','legdat'
+load([outputDirectory 'target_ts_0.mat']); %'dat','legdat'
 nd0 = length(legdat); %size of old data matrix
 
 % ------ load logit model results glmres_-TSI_clim_area.mat
@@ -14,7 +14,7 @@ varname={'TSI','stress-free tree growth','climate stability','RGR($t$-350a)'};
 for nv=1:3
   % name of model variant
   tag=[vis{nv}]; %'8.8_'
-  load([scdir 'glmres_' tag '.mat']); %2
+  load([outputDirectory 'glmres_' tag '.mat']); %2
   %skill=val,timres,prob,tprob,statcoeff,PearsTot,bestbb=bobu[bi],bestcor=corn[bc]
 
   sp=sum(prob,2); fac=sp(2)/sum(sp);

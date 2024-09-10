@@ -7,7 +7,7 @@
 %function gp = make_grid(offset,dll)
 close all
 clear all
-load_pars; % sets common parameters (e.g., scdir, latlim, breaks)
+load_pars; % sets common parameters (e.g., outputDirectory, latitudeLimits, breakPoints)
 
 % --------------------------------------
 % retrieves control parameters from function argument (in parallel compuation mode)
@@ -29,7 +29,7 @@ angl=(0:0.04:1)*2*3.1415;
 sn=[[1 1];[1 -1];[-1 1];[-1 -1];];
 
 % grid information
-long=lonlim(1):dlon:lonlim(end); latg=latlim(1):dlat:latlim(end);
+long=longitudeLimits(1):dlon:longitudeLimits(end); latg=latitudeLimits(1):dlat:latitudeLimits(end);
 nx=length(long);
 ny=length(latg);
 
@@ -54,7 +54,7 @@ load(['data/seamask_norm_0.05'])  %seamask_High
 
 % load C14 dates and site info
 load(['c14mat/C14_europe0']);%'lonsn','latsn','C14agesn','C14SDsn','SiteIDsn','datIDsn'
-nt=length(breaks);
+nt=length(breakPoints);
 
 % number of columns and rows in plot; size
 ncol=round(sqrt(nt))+1;  nrow=ceil(nt/ncol);
@@ -63,14 +63,14 @@ dxp=0.97/ncol; dyp=0.97/nrow;
 % --------------------------------------
 % loop over time segments
 tii=0;
-for ti=breaks
+for ti=breakPoints
   if 1
     % clear matrices
     values=zeros(MaxOcc,nx,ny); %-9999 all ocean
     regs=zeros(MaxOcc,nx,ny); % all ocean
 
     % load geo-position of sites and index that links sites to clusters
-    load([scdir 'mat/clusti_' num2str(ti) '_120']);
+    load([outputDirectory 'mat/clusti_' num2str(ti) '_120']);
     %%load(['../p3k14c/mat/clusti3_' num2str(ti) '_120']);
     lons = lonsn;  lats = latsn;
     nmax = length(lons);
@@ -97,7 +97,7 @@ for ti=breaks
     make_grid_regions
   else
   % load region/grid information from binary file
-    load([scdir 'mat/regiongrid_' num2str(ti)]);
+    load([outputDirectory 'mat/regiongrid_' num2str(ti)]);
   end
 
  % --------------------------------------
@@ -108,12 +108,12 @@ for ti=breaks
   gca = subplot('Position',[0.01 0.01 0.98 0.98]);
   imagesc(flipud(reg')); %'
   for i=1:ncolor
-    x=(regionlon(i)-lonlim(1))/(lonlim(2)-lonlim(1));
-    y=(regionlat(i)-latlim(1))/(latlim(2)-latlim(1));
+    x=(regionlon(i)-longitudeLimits(1))/(longitudeLimits(2)-longitudeLimits(1));
+    y=(regionlat(i)-latitudeLimits(1))/(latitudeLimits(2)-latitudeLimits(1));
     annotation('textbox',0.01+[x y 0.05 0.05]*0.98,'string',[num2str(i) ':' num2str(round(area(i)*1E-4))],'FontWeight','bold','FontSize',24,'EdgeColor','none','Color','w');%,'FontName','Arial'
   end
   annotation('textbox',[0.15 0.82 0.12 0.05],'string',num2str(ti),'FontWeight','bold','FontSize',32,'EdgeColor','none','Color','w');%,'FontName','Arial'
-  outfilename=[scdir 'plots/grid_regnum_' num2str(dlon) '_' num2str(ti) '.png'];
+  outfilename=[outputDirectory 'plots/grid_regnum_' num2str(dlon) '_' num2str(ti) '.png'];
   print('-dpng','-r300', outfilename);
 
   gcf=figure(1);
@@ -130,9 +130,9 @@ end %ti
 
 % --------------------------------------
 % save areas to file
-save([scdir 'area_' num2str(dlon) '_' num2str(breaks(1)) '_' num2str(breaks(end)) '.mat'],'areav','nreg');
+save([outputDirectory 'area_' num2str(dlon) '_' num2str(breakPoints(1)) '_' num2str(breakPoints(end)) '.mat'],'areav','nreg');
 
 % save plot to file
 set(gcf,'PaperPositionMode','auto','InvertHardCopy','off','Visible','on');
-outfilename=[scdir 'plots/grid' num2str(dlon) '.png'];
+outfilename=[outputDirectory 'plots/grid' num2str(dlon) '.png'];
 print('-dpng','-r300', outfilename);

@@ -3,7 +3,7 @@
 % SPDX-License-Identifier: GPL-3.0-or-later
 
 close all;
-load_pars; % sets common parameters (scdir, cc, latlim, regs)
+load_pars; % sets common parameters (outputDirectory, cc, latitudeLimits, regs)
 
 % load own compilation (dASIS+)
 fname='C14_dASIS'; off=3; IDi=2; Dbi=8; lli=4;

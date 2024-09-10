@@ -5,8 +5,8 @@
 % calc and plot overlap between time-series
 %
 %clear all; close all;
-load_pars; % sets common parameters (scdir, cc, latlim, regs)
-timelim=[2.8 10.2];
+load_pars; % sets common parameters (outputDirectory, cc, latitudeLimits, regs)
+timeLimits=[2.8 10.2];
 tmax=8.9; % max time for statistical measures (ka BP) and graphical output
 tavg=1.5; % time window moving average
 
@@ -27,7 +27,7 @@ stdc=9E-5;
 nrgr=length(spr);
 % ------ common time vector
 dt  = 0.010;
-time= timelim(1):dt:timelim(2);
+time= timeLimits(1):dt:timeLimits(2);
 tip1= dat(:,1)'; %'
 
 % ------------------------------------------------------------------
@@ -40,7 +40,7 @@ for ic=1:nrgr
   ioff=spr(ic);
   avgrde=dat(:,ioff);%
   if nanstd(avgrde)>0.1 avgrde=avgrde*1E-3; end %change units to ka-1
-  ii=find(~isnan(avgrde') & tip1<=timelim(2) & tip1>=3); % timelim(1)
+  ii=find(~isnan(avgrde') & tip1<=timeLimits(2) & tip1>=3); % timeLimits(1)
   tip2=tip1(ii)';
   avgrde=avgrde(ii);
   str =regexprep(legdat{ioff},'_','');
@@ -55,7 +55,7 @@ for ic=1:nrgr
   % correct position of x-label
   xlp= get(xl,'Position'); xlp(2)=xlp(2)+0.042; set(xl,'Position',xlp);
   % add zero-line
-  plot(timelim,zeros(2,1),'-','Color',ones(3,1)*0.5,'LineWidth',1);
+  plot(timeLimits,zeros(2,1),'-','Color',ones(3,1)*0.5,'LineWidth',1);
   % add text annotation
   text(6.3,2.1,str,'fontsize',fs,'Fontweight','bold');
 
@@ -115,7 +115,7 @@ for ic=1:nrgr
   stl = (regexprep(stl,' ',''));
 
   % ------- save plot to PNG
-  file=sprintf('%splots/RGR_%s_%s.png',scdir,str,stl);
+  file=sprintf('%splots/RGR_%s_%s.png',outputDirectory,str,stl);
   file =regexprep(file,' ','');
   set(gcf,'PaperPositionMode','auto','InvertHardCopy','off');
   print('-dpng','-r300', file);
@@ -123,6 +123,6 @@ for ic=1:nrgr
 end %for ic loop over RGR recon
 
 % ------- save data and related into to MATLAB binary
-file=sprintf('%starget_ts_%d.mat', scdir,length(spv));
+file=sprintf('%starget_ts_%d.mat', outputDirectory,length(spv));
 fprintf('save all relevant data in %s\n',file)
 save('-v6',file,'dat','legdat','stat1','statnam','tmax');

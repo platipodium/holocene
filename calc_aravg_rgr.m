@@ -9,9 +9,9 @@ n=length(wei);
 rgr_ar=zeros(1,length(tim));
 
 % loop over time window
-for ti=breaks
+for ti=breakPoints
   % load data for each time window
-  load([scdir 'mat/AllPop' tag '_' num2str(tii) '.mat']);
+  load([outputDirectory 'mat/AllPop' tag '_' num2str(tii) '.mat']);
         % variables: poptime=tm, ymv=ymv,trgr=tirgr,rgr=rgrv,nreg=nregions
   %%ii=find(~isnan(rgr))' %'
   rgr(isnan(rgr))=0;

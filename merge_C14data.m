@@ -7,7 +7,7 @@
 %
 close all; %clear all
 addpath('~/tools/m_map'); %
-load_pars; % sets common parameters (scdir, cc, latlim, regs)
+load_pars; % sets common parameters (outputDirectory, cc, latitudeLimits, regs)
 
 % ----------  division lines for continental domain
 % left, bottom, right, top
@@ -169,6 +169,6 @@ for mode=1:1+3*strcmp(contname,'europe') % modes 2-4 only for Europe
 
   % save plot to file
   set(gcf,'PaperPositionMode','auto', 'InvertHardCopy','off','Visible','on');
-  outfilename=[scdir 'plots/map_' cont num2str(mode) '.png'];
+  outfilename=[outputDirectory 'plots/map_' cont num2str(mode) '.png'];
   print('-dpng','-r300', outfilename); % '-r600' for reproduction quality
 end % mode

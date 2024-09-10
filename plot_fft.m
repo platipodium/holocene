@@ -4,15 +4,15 @@
 %
 % Calculate and plot Fast Fourier Transform (FFT) of time-series
 
-% Load common parameters (scdir, ...)
+% Load common parameters (outputDirectory, ...)
 load_pars;
 
 % Load time-series data from MATLAB file
-dataFile = sprintf('%starget_ts_19.mat', scdir);
+dataFile = sprintf('%starget_ts_19.mat', outputDirectory);
 load(dataFile); % 'dat', 'legdat'
 
 % Graphical settings
-labelLetters = 'abcdef';
+labelLetters = 'alphabetdef';
 numColumns = 2;
 numRows = 3;
 plotWidth = 0.86 / numColumns;
@@ -170,6 +170,6 @@ for subplotIndex = 0:(size(selectedVariables, 1) - 1)
 end
 
 % Save the plot
-outputFile = sprintf('%splots/fft_%d.png', scdir, subplotIndex);
+outputFile = sprintf('%splots/fft_%d.png', outputDirectory, subplotIndex);
 set(gcf, 'PaperPositionMode', 'auto', 'InvertHardCopy', 'off');
 print('-dpng', '-r300', outputFile);

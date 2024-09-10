@@ -8,8 +8,8 @@
 % kai wirtz (HZG) 2023
 %
 clear all; close all;
-load_pars; % sets common parameters (scdir, cc, latlim, regs)
-timelim = [2.8 10.2];
+load_pars; % sets common parameters (outputDirectory, cc, latitudeLimits, regs)
+timeLimits = [2.8 10.2];
 
 % parameters for band-pass filtering
 tmov = 151;toff = 40; % smoothing parameters
@@ -17,13 +17,13 @@ tavg = 1.5;         % detrend
 
 % ------ common time vector and data matrix
 dt  = 0.01; di = 3;
-time= timelim(1):dt:timelim(2);
+time= timeLimits(1):dt:timeLimits(2);
 dat = zeros(length(time),12) + NaN;
 dat(:,1) = time; legdat{1} = 'time';
 
 % ------------------------------------------------------------------
 %  RGR Europe (methods)
-load([scdir 'avg_rgr_all']);   % variables: leg  rgr_m  tirgr
+load([outputDirectory 'avg_rgr_all']);   % variables: leg  rgr_m  tirgr
 ri = [6]; % 6 area-based
           % other methods can be added such as w normalized calbration or pooled
 for i = 1:length(ri)
@@ -43,7 +43,7 @@ i0=4;
 contname={'EAsia','NAmerica','SAmerica','Africa','Australia'};
 for i=1:length(contname)
   cc = (contname{i});
-  file = [scdir 'mat/AllPop_' cc '_NoNorm_Bin100_all.mat'];
+  file = [outputDirectory 'mat/AllPop_' cc '_NoNorm_Bin100_all.mat'];
   if exist(file)
     load(file); %poptime = tm, ymv = ymv,trgr = tirgr,rgr = rgrv,nreg = nregions
     trgr = trgr*1E-3;
@@ -115,7 +115,7 @@ ln = ri(jj);
 % loop over time-segments
 tj = 1;
 for tmax = [6.2 9.5]
-  file = sprintf('%sdtwpca/dtwpca2_%3.2f_%2.0f_%1.0f_%d.mat',scdir,tmax,dtw_Dist_crit,tol*100,ln);
+  file = sprintf('%sdtwpca/dtwpca2_%3.2f_%2.0f_%1.0f_%d.mat',outputDirectory,tmax,dtw_Dist_crit,tol*100,ln);
   fprintf('tm = %1.1f %d\t loading dtw-pca from %s\n',tmax,ln,file);
   if exist(file)
     load(file);
@@ -159,13 +159,13 @@ for jp = 1:2
   legdat{i0+jp} = ['climate PCA' num2str(jp)];
 end
 legdat{i0} = 'climate stability';
-file = sprintf('%sdtwpca/dtwpca_proxydata_%3.2f_%2.0f_%1.0f_%d.mat',scdir,tmax,dtw_Dist_crit,tol*100,ln);
-file = sprintf('%spca_0.mat',scdir);
+file = sprintf('%sdtwpca/dtwpca_proxydata_%3.2f_%2.0f_%1.0f_%d.mat',outputDirectory,tmax,dtw_Dist_crit,tol*100,ln);
+file = sprintf('%spca_0.mat',outputDirectory);
 fprintf('save PCs/dPCs data in %s\n',file)
 save('-v6',file,'time','pca','exp_vara','clim_stability');
 
 % --------------------------------------
 % save combined data to file
-file = sprintf('%starget_ts_0.mat', scdir);
+file = sprintf('%starget_ts_0.mat', outputDirectory);
 fprintf('save all data in %s\n',file)
 save('-v6',file,'dat','legdat','tmov','toff');
