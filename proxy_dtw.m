@@ -27,15 +27,15 @@ fs    = 20; lw=1;
 ncol  = 4; % plot display: number of columns
 nrow  = 4; % plot display: number of rows
 dxp=0.9/ncol;dyp=0.89/nrow;
-mcol(1,:)=[1 0.5 0]; mcol(2,:)=[0 0.5 1];
+markerColors(1,:)=[1 0.5 0]; markerColors(2,:)=[0 0.5 1];
 
 % time segments
 dt0=0.01;
-timelimv=[[2.8 6.2];[5.8 9.5]];
+timeLimitsv=[[2.8 6.2];[5.8 9.5]];
 tsmax=3.;
 
 %load_pars;
-scdir='out/';
+outputDirectory='out/';
 edir ='paleoclim/';
 
 % load paleoclimate proxy time-series and meta-info
@@ -47,10 +47,10 @@ load(evinfofile); % into struct evinfo
 % -------------------------------------------------------
 % loop over time segments
 for tl=1:2
-  timelim=timelimv(tl,:);
+  timeLimits=timeLimitsv(tl,:);
   % time vectors
-  time2=(timelim(1)-tol):dt0:(timelim(2)+tol);
-  time20=(timelim(1)):dt0:(timelim(2));
+  time2=(timeLimits(1)-tol):dt0:(timeLimits(2)+tol);
+  time20=(timeLimits(1)):dt0:(timeLimits(2));
   nt=length(time2)-1;
 
   % time range of TS
@@ -171,13 +171,13 @@ for tl=1:2
       it=find(time1{ie}>=tmin2{ie} & time1{ie}<=tmax2{ie});
       if out & out2
         gca = subplot('Position',[0.05+ix*1.05*dxp 0.07+(iy*1.05)*dyp dxp dyp]);
-        set(gca,'YLim',[-1 1]*tsmax,'XLim',timelim,'Box','on','fontsize',fs,'XDir','reverse');
+        set(gca,'YLim',[-1 1]*tsmax,'XLim',timeLimits,'Box','on','fontsize',fs,'XDir','reverse');
       if (loop==1) % plot only few iterations
         hold on
         %%plot(tim,evinfo.value{i},'-','color',ones(3,1)*0.,'LineWidth',4);
         plot(time1{ie}(it),proxi{ie},'-','color',ones(3,1)*0.,'LineWidth',3);
 
-        text(mean(timelim)*1.0,0.91*tsmax,ta{ie},'HorizontalAlignment','center','fontsize',fs,'FontWeight','b');
+        text(mean(timeLimits)*1.0,0.91*tsmax,ta{ie},'HorizontalAlignment','center','fontsize',fs,'FontWeight','b');
         text(3.9,0.91*tsmax,num2str(ie),'HorizontalAlignment','center','fontsize',fs,'FontWeight','b','Color','w','BackgroundColor','k');
         if iy>0, set(gca,'XTickLabel',[]); end
         end
@@ -351,7 +351,7 @@ for tl=1:2
     fprintf('\t pca: %1.3f %1.3f\n',pca.cum_var(2),pca.cum_var(nmax));
     fprintf('dtw: %1.3f\n',mean(mDTW));
     mlPear(loop)=mean(mPear(ie));
-    
+
     % ------ calc PCA with weights ----------------------
     pca_ts=pca.T;
 
@@ -365,7 +365,7 @@ for tl=1:2
     end
     pca_change=-(kine-mean(kine))/std(kine);
     t_change=(time20(2)-time20(1))/2+ time20(1:end-1);
-    file=sprintf('%sdtwpca/dtwpca2_%3.2f_%2.0f_%1.0f_%d.mat',scdir,timelim(2),dtw_Dist_crit,tol*100,loop);
+    file=sprintf('%sdtwpca/dtwpca2_%3.2f_%2.0f_%1.0f_%d.mat',outputDirectory,timeLimits(2),dtw_Dist_crit,tol*100,loop);
     save(file,'mlPear','mDTW','proxi','time1','time20','pcats','cDTW_Dist','cPears','InEur','tol','exp_var','pca_change','t_change');
 
   end %for loop
@@ -377,7 +377,7 @@ for tl=1:2
       set(0, 'CurrentFigure', gcf(np))
       figure(np)
       set(gcf(np),'Visible','on');
-      file=sprintf('%splots/proxy_dtwp_%03.2f_%3.2f_%d.png',scdir,threshold,timelim(2),np);
+      file=sprintf('%splots/proxy_dtwp_%03.2f_%3.2f_%d.png',outputDirectory,threshold,timeLimits(2),np);
       if np==nf-1,fprintf('saving graph to %s\n',file);end
       set(gcf(np),'PaperPositionMode','auto');%,'InvertHardCopy','off'
       print(gcf(np),'-dpng','-r300', file);
