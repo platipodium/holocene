@@ -6,12 +6,6 @@
 % SPDX-FileContributor: Kai W. Wirtz  <kai.wirtz@hereon.de>
 % SPDX-License-Identifier: GPL-3.0-or-later
 
-% Global Variables:
-% - outputDirectory: Directory for output files
-% - latitudeLimits: Latitude boundaries for the study area
-% - longitudeLimits: Longitude boundaries for the study area
-% - breakPoints: Time segments for analysis
-
 % Input Files:
 % - data/seamask_norm_0.05: Seamask data
 % - c14mat/C14_europe0: C14 dates and site information
