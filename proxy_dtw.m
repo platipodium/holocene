@@ -6,10 +6,6 @@
 % SPDX-FileContributor: Kai W. Wirtz <kai.wirtz@hereon.de>
 % SPDX-License-Identifier: GPL-3.0-or-later
 
-% Global Variables:
-% - outputDirectory: Directory for output files
-% - edir: Directory for input files
-
 % Input Files:
 % - paleoclim/InEur_27_920.mat: MATLAB file containing paleoclimate proxy time-series
 % - paleoclim/proxydescription_488_0_11.00_1.70.mat: MATLAB file containing meta-info for proxies

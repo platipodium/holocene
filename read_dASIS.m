@@ -6,12 +6,6 @@
 % SPDX-FileContributor: Kai W. Wirtz <kai.wirtz@hereon.de>
 % SPDX-License-Identifier: GPL-3.0-or-later
 
-% Global Variables:
-% - outputDirectory: Directory for output files
-% - cc: Common parameter
-% - latitudeLimits: Latitude limits for processing
-% - regs: Region data
-
 % Input Files:
 % - c14mat/C14_dASIS.xlsx: Excel file containing C14 dates and site information
 
