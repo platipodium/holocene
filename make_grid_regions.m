@@ -7,24 +7,6 @@
 % SPDX-FileContributor: Kai W. Wirtz  <kai.wirtz@hereon.de>
 % SPDX-License-Identifier: GPL-3.0-or-later
 
-% Global Variables:
-% - clustdat: Data for clusters
-% - clusti: Cluster indices
-% - clustn: Cluster numbers
-% - lats, lons: Latitude and longitude arrays
-% - regionlon, regionlat: Longitude and latitude of regions
-% - long, latg: Longitude and latitude grid
-% - nx, ny: Grid dimensions
-% - MaxOcc: Maximum occupation layers
-% - regs, values: Grid occupation and value matrices
-% - sn: Directional vectors
-% - radmax: Maximum radius
-% - weigh: Weight matrix
-% - outputDirectory: Directory for output files
-
-% Input Files:
-% - None specified explicitly in the script
-
 % Output Files:
 % - regiongrid_<ti>.mat: Binary file containing region information
 
